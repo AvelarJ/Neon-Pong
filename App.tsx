@@ -2,19 +2,17 @@ import React, { useState } from 'react';
 import { StatusBar, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { COLORS, GAME_SETTINGS } from './src/constants/gameConfig';
 import Paddle from './src/components/Paddle';
-import { useGameLoop } from './src/hooks/useGameLoop';
 
 export default function App() {
   const { ball, score, restart } = useGameLoop();
-  const [showMenu, setShowMenu] = useState(false);
 
   return (
     <View style={[styles.container, ball.hitDetected && styles.flash]}>
       {/* Scoreboard */}
       <Text style={styles.scoreOverlay}>{score.opponent} - {score.player}</Text>
-      
+
       {/* Goal Posts / Bounds Visualization 
-          Adding visual lines to represent the "gates" and outer boundaries.
+          Adding visual lines to represent the \"gates\" and outer boundaries.
         */}
       <View style={_styleObjects.topGoalField} />
       <View style={_styleObjects.bottomGoalField} />
@@ -33,7 +31,6 @@ export default function App() {
         top={100} 
         left={ball.x - GAME_SETTINGS.PADDLE_WIDTH / 2} 
       />
-
       <Paddle 
         color={COLORS.USER} 
         top={700} 
@@ -76,7 +73,7 @@ export default function App() {
 const _styleObjects = {
   topGoalField: {
     position: 'absolute',
-    top: 140, // Gap for goal post
+    top: 140,
     width: 200,
     height: 5,
     backgroundColor: '#fff'
@@ -87,7 +84,7 @@ const _styleObjects = {
     width: 200,
     height: 5,
     backgroundColor: '#fff'
-  }
+  },
 };
 
 const styles = StyleSheet.create({
@@ -133,7 +130,6 @@ const styles = StyleSheet.create({
     top: -150,
     right: 0,
     width: 200,
-    padding_10, // padding omitted for brevity in thinking - converted to style in draft logic
     backgroundColor: 'rgba(0,0,0,0.8)',
     borderRadius: 10,
     padding: 20,
